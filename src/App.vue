@@ -1,30 +1,30 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+  <header>
+    <router-link to="/">
+      <h1 class="text-center">Vue<span>Movies</span>Api</h1>
+    </router-link>
+  </header>
+  <router-view />
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<style lang="scss" scoped>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+span {
+  color: green;
 }
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+a {
+  text-decoration: none;
+}
+h1 {
+  color: white;
+  padding: 5px;
+  background-color: #000022;
+  margin-bottom: -1px;
 }
 </style>
