@@ -11,11 +11,12 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+
   text-decoration: none;
+  background-color: #040017;
 }
 span {
-  color: green;
+  color: #42b883;
 }
 
 a {
