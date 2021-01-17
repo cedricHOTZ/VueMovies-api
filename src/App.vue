@@ -7,14 +7,15 @@
   <router-view />
 </template>
 
-<style lang="scss" scoped>
+<style scoped lang="scss" >
 * {
-  margin: 0;
+  margin: 0 !important;
   padding: 0;
 
   text-decoration: none;
-  background-color: #040017;
+ 
 }
+
 span {
   color: #42b883;
 }

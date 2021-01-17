@@ -27,8 +27,9 @@
       />
       <input type="submit" value="Rechercher" class="btn btn-primary" />
     </form>
-
-    <div class="movies-list">
+   
+    <div class="movies-list" v-bind:class="{ active:isActive , 'backgroundColor': desactive }">
+    
       <div class="container">
         <div class="row">
           <div
@@ -36,18 +37,16 @@
             v-for="movie in movies"
             :key="movie.imdbI"
           >
-            <div class="col-sm-6 col-md-3">
-              <router-link :to="'/movie/' + movie.imdbID">
-                <div class="product-image">
-                  <img :src="movie.Poster" />
-                  <!-- <div class="type">{{ movie.Type }}</div> -->
-                </div>
-                <div class="detail">
-                  <h3>{{ movie.Title }}</h3>
-                  <p class="">Année: {{ movie.Year }}</p>
-                </div>
-              </router-link>
-            </div>
+            <router-link :to="'/movie/' + movie.imdbID">
+              <div class="product-image">
+                <img :src="movie.Poster" />
+                <!-- <div class="type">{{ movie.Type }}</div> -->
+              </div>
+              <div class="details">
+                <h3>{{ movie.Title }}</h3>
+                <p class="">Année: {{ movie.Year }}</p>
+              </div>
+            </router-link>
           </div>
         </div>
       </div>
@@ -61,6 +60,13 @@ import { ref } from "vue";
 import env from "@/env.js";
 
 export default {
+  data() {
+    return {
+      isActive: true,
+      backgroundColor:'red',
+  desactive: false
+    };
+  },
   setup() {
     const search = ref("");
     const movies = ref([]);
@@ -80,10 +86,31 @@ export default {
       movies,
       searchMovies
     };
+    
   }
 };
 </script>
-<style lang="scss" scoped>
+<style scoped lang="scss">
+@media only screen and (min-width: 410px) and (max-width: 1440px) {
+
+  .detail {
+    width: 40% !important;
+    overflow: visible !important;
+    margin: auto;
+  }
+  .featured-img {
+    width: 40% !important;
+    margin: auto;
+  }
+  .details h3 {
+    overflow: hidden !important;
+    width: auto;
+    color: #42b883 !important;
+  }
+  input {
+    width: 50% !important;
+  }
+}
 .home {
   .feature-card {
     position: relative;
@@ -99,6 +126,7 @@ export default {
     .detail {
       position: absolute;
       left: 0;
+      width: 100%;
       bottom: 0;
       right: 0;
       z-index: 1;
@@ -110,6 +138,7 @@ export default {
         color: white;
         text-align: center;
         text-decoration: none;
+        overflow: hidden;
       }
       p {
         color: white;
@@ -170,12 +199,14 @@ h3 {
   width: max-content;
   margin-top: 2px;
   color: white;
+  overflow: hidden;
 }
 p {
   color: white;
 }
 a {
   text-decoration: none;
+  overflow: hidden;
 }
 .movie {
   background-color: rgba(0, 0, 0, 0.2);
